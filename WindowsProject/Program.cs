@@ -16,7 +16,7 @@ namespace WindowsProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new NotePad());
+            Application.Run(new Form10());
         }
     }
 }

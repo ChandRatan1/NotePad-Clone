@@ -67,6 +67,7 @@ namespace WindowsProject
             TextBox tb = sender as TextBox;
 
             //This validation applies to User Name and Password Textbox's
+            
             if (tb.Text.Trim().Length == 0)
             {
                 MessageBox.Show("You can't leave the field empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -90,6 +91,12 @@ namespace WindowsProject
 
                 if (tb.Name != "txtPwd")
                 {
+                    Regex pwd = new Regex((@"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"));
+                    if (!pwd.IsMatch(txtPwd.Text))
+                    {
+                        MessageBox.Show("Please Enter Valid Email Id", "Email Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        e.Cancel = true;
+                    }
                     if (txtCPwd.Text != txtPwd.Text)
                     {
                         DialogResult dr = MessageBox.Show("Confirm Password Should be match With password\n\nDo you remember the \r\npassword?\r\n", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
